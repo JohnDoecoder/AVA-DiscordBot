@@ -34,5 +34,5 @@ def read_file(path: str):
 
 
 def read_credentials():
-    with open('credentials.json', 'r') as f:
+    with open('configuration/credentials.json', 'r') as f:
         return json.load(f)

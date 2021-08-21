@@ -12,23 +12,26 @@ import datetime
 import command_logic
 import helpers.write_file
 from helpers import read_file, replies, write_file
-from command_logic import dice as dice_logic, cointoss as coin_logic, image, quote, verse, delete
+from command_logic import dice as dice_logic, cointoss as coin_logic, image, quote, verse, delete, meme
+
+# Constants -------------------------------------------------------
 
 DEF_COLOR = 0x0089a1
+PREFIX = '!'
 
-intents = discord.Intents().all()
-client = commands.Bot(command_prefix='!', intents=intents)
-slash = SlashCommand(client, sync_commands=True)
-
-# Credentials------------------------------------------------------
+# Credentials -----------------------------------------------------
 credentials = read_file.read_credentials()
 token = credentials["discord"]["token"]
 reddit = praw.Reddit(client_id=credentials["reddit"]["id"],
-                     client_secret='credentials["reddit"]["secret"]',
-                     user_agent='credentials["reddit"]["agent"]',
+                     client_secret=credentials["reddit"]["secret"],
+                     user_agent=credentials["reddit"]["agent"],
                      check_for_async=False)
 
-# Initialize-------------------------------------------------------
+# Initialize ------------------------------------------------------
+
+intents = discord.Intents().all()
+client = commands.Bot(command_prefix=PREFIX, intents=intents)
+slash = SlashCommand(client, sync_commands=True)
 
 commands = read_file.read_command_config()
 guilds = []
@@ -65,7 +68,7 @@ async def on_ready():
 
 # -----------------------------------------------------------------
 
-'''
+
 @client.event
 async def on_message(message):
     o = ''
@@ -76,8 +79,10 @@ async def on_message(message):
         log(message.author.name, message.channel.name, message.content, other=o, guild=message.guild)
     else:
         log(message.author.name, message.channel.name, message.content, other=o)
-'''
-# -----------------------------------------------------------------
+
+    await client.process_commands(message)
+
+# Slash commands --------------------------------------------------
 
 
 @slash.slash(
@@ -155,6 +160,15 @@ async def _quote(ctx):
 
 
 @slash.slash(
+    name='meme',
+    description='Shows you a meme from reddit',
+    guild_ids=guilds
+)
+async def _meme(ctx):
+    await meme(ctx)
+
+
+@slash.slash(
     name='help',
     description='Shows you how to use a command',
     guild_ids=guilds,
@@ -200,6 +214,19 @@ async def dice(ctx):
         insert=dice_logic.dice_toss(),
         mention=ctx.author.mention)
     await ctx.send(message)
+
+
+@client.command()
+async def meme(ctx):
+    meme_object = command_logic.meme.get_meme(reddit, ctx.message.guild.id)
+    embed_var = discord.Embed(title='Meme', color=discord.Colour(DEF_COLOR))
+    embed_var.set_image(url=meme_object.url)
+    embed_var.add_field(
+        name=meme_object.title,
+        value=f'{meme_object.author} in {meme_object.subreddit}',
+        inline=True
+    )
+    await ctx.send(embed=embed_var)
 
 
 @client.command()
