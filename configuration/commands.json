@@ -1,0 +1,456 @@
+{
+    "hello": {
+        "replies": [
+            "Hallo {mention}!",
+            "Hallo. Ich heiße Bot. James Bot...moment falscher Text.",
+            "Hey, {mention}, heute schon gelacht?",
+            "Hallöchen {mention}!",
+            "Schön dich zu sehen, {mention}",
+            "Hey, auch mal wieder da, {mention}?",
+            "Oh, hi {mention} hab dich gar nicht kommen hören, wie geht's denn so?"
+        ],
+        "help": "`/hello` | Returns a simple, randomised answer.",
+        "permissions": [],
+        "urls": []
+    },
+    "help": {
+        "replies": [],
+        "help": "`/help <command>` | Shows you how to use the command.",
+        "permissions": [],
+        "urls": []
+    },
+    "dice": {
+        "replies": [
+            "{mention} hat eine **{insert}** geworfen.",
+            "{mention} würfelt und erhält eine **{insert}**.",
+            "Der Wurf von {mention} ergab eine **{insert}**!",
+            "Der Würfel ist gefallen und zeigt {mention} eine **{insert}**."
+        ],
+        "help": "`/dice` | Creates a random number between 1 and 6 to simulate a dice throw.",
+        "permissions": [],
+        "urls": []
+    },
+    "cointoss": {
+        "replies": [
+            "{mention} hat **{insert}** geworfen.",
+            "{mention} wirft eine Münze und erhält **{insert}**.",
+            "Der Münzwurf von {mention} ergab **{insert}**!",
+            "Der Münze wackelt noch leicht, zeigt {mention} aber **{insert}**."
+        ],
+        "help": "`/coitoss` | Throws a virtual coin and return the result.",
+        "permissions": [],
+        "urls": []
+    },
+    "meme": {
+        "replies": [],
+        "help": "`/meme` | Shows you a random meme from Reddit",
+        "permissions": [],
+        "urls": []
+    },
+    "person": {
+        "replies": [
+            "Hier, deine zufällige Person:",
+            "Eine weitere, nichtexistente Person:",
+            "Zufällige Person kommt sofort:",
+            "Liebevoll von der KI kreiert:",
+            "Darf ich vorstellen, dein neuer Dating-Partner:",
+            "Diese Person gibt es nicht:",
+            "Wie diese Person wohl heißen würde...",
+            "Das hat das Internet ausgespuckt:",
+            "Smash, trash or marry?",
+            "ICh will ja nichts sagen, aber ich sehe da ein paar Ähnlichkeiten..."
+        ],
+        "help": "`/person` | Returns a random image from thispersondoesnotexist.com",
+        "permissions": [],
+        "urls": ["https://thispersondoesnotexist.com/image"]
+    },
+    "cat": {
+        "replies": [
+            "Katze!",
+            "Eine zufällige Katze:",
+            "Katzen sind doch schön!",
+            "Das hat die KI nur für dich gemacht:",
+            "Ist sie nicht niedlich?",
+            "Herzallerliebst, oder?",
+            "Eine Katze :cat:",
+            "Um dir den Tag zu versüßen:",
+            "Vielleicht Schrödingers Katze?",
+            "Brandneu, noch mit allen neun Leben:"
+        ],
+        "help": "`/cat` | Returns a random image from thiscatdoesnotexist.com",
+        "permissions": [],
+        "urls": ["https://thiscatdoesnotexist.com/"]
+    },
+    "award": {
+        "replies": [
+            "{ref_mention}, {mention} hat dir einen Award geschenkt.",
+            "{ref_mention}, {mention} findet, dass du einen Award verdient hast.",
+            "{ref_mention}, {mention} findet das super, hier ist dein Award.",
+            "{mention} beschenkt {ref_mention} mit einem Award.",
+            "{ref_mention}, {mention} teilt deinen merkwürdigen Humor - ein Award für dich!",
+            "Dein Award von {mention} - Nicht fallenlassen, {ref_mention}!",
+            "Klasse Aktion, {ref_mention}, hier dein Award von {mention}.",
+            "Den hast du dir redlich verdient {ref_mention}!",
+            "Just made my day! Thx {ref_mention}",
+            "Wie ich sehe sammelt {ref_mention} fleißig Medallien!"
+        ],
+        "help": "`/award (refering to message)` | Gives the author of the message you referred to an award.",
+        "permissions": [],
+        "urls": []
+    },
+    "awards": {
+        "replies": [
+            "Hier siehst du alle Leute und ihre Awards:",
+            "Darf ich dir vorstellen: Die Award-Wand:",
+            "Alle Awards, ich habe es mir extra aufgeschrieben.",
+            "Na, wer ist den heute auf Platz 1?",
+            "Das sind die Awards:",
+            "Die Hall of Fame:"
+        ],
+        "help": "`/awards` | Shows you a list of all the people on the server and how many awards they have.",
+        "permissions": [],
+        "urls": []
+    },
+    "wiki": {
+        "replies": [
+            "Ich hoffe ich kann hiermit deinen Wissensdurst stillen:",
+            "Das sollte dir weiterhelfen:",
+            "Wikipedia hat die Antwort (bestimmt):",
+            "Das konnte ich dazu finden:",
+            "Da helfe ich dir natürlich gerne:",
+            "Keine Ahnung? Kein Problem! Hier bitte:",
+            "Das wollte ich eigentlich auch schon immer wissen...",
+            "Nicht schon wieder! Na gut, versuch es mal damit:",
+            "Beim Surfen habe ich das hier für dich gefunden:"
+        ],
+        "help": "`/wiki <searchword>` | Shows you the wiki article of your word. If there is no article it will return the wiki search.",
+        "permissions": [],
+        "urls": ["https://wikipedia.de/", "https://de.wikipedia.org/w/index.php?search="]
+    },
+    "offtopic": {
+        "replies": [
+            "Ähm, entschuldigung? Falscher Kanal {ref_mention}!",
+            "{ref_mention}, falscher Ort, falsche Zeit...",
+            "Liebe Servermitglieder, vor allem {ref_mention}, jährlich sterben Expertenschätzungen zufolge etwa eineinhalb halbe Einhörner an im falschen Kanal geposteten Nachrichten, also achtet bitte auf den richtigen Umgang mit euren Informationen!",
+            "Interessante Diskussion, {ref_mention} aber beamt euch mal rüber in den richtigen Kanal, {insert}",
+            "Ich unterbreche dich ja ungerne, {ref_mention}, aber das passt hier nicht...",
+            "Falscher Kanal, rüber mit euch! Ich bin doch nicht die Aufruhe verhindernde Assistentin."
+        ],
+        "unauthorised": [
+            "Will da jemand jemanden abschieben?",
+            "Nein, nein und nochmals nein!",
+            "Wenn du das so schlimm findest wende dich doch bitte an jemanden der das darf."
+        ],
+        "help": "`/offtopic <textchannel mention> (referring to a message)` | Deletes the reffered message and moves it to the mentioned channel.",
+        "permissions": [675076564085637132, 509706417251549184],
+        "urls": []
+    },
+    "morning": {
+        "replies": [
+            "Guten Morgen {mention}, ich hoffe du hast gut geschlafen.",
+            "Einen wunderschönen, guten Morgen {mention}.",
+            "Guten Morgen, guten Morgen, guten Morgen, {mention}.",
+            "Morgääähn {mention}",
+            "Morgen {mention} :)",
+            "WO IST MEIN KAFFEE??? Oh, guten Morgen {mention}.",
+            "Immer diese Frühaufsteher, tss...",
+            "Schon wieder wach, {mention}?",
+            "Guten Morgeen, du erwischst mich gerade bei meinen Frühsport! Und eins und zwei und drei...."
+        ],
+        "unauthorised": [
+            "Ich will ja nicht wissen wann du normalerweise aufstehst, aber Morgen ist für mich etwas anderes!",
+            "Ist dein Schlafrhytmus etwas durch den Wind?",
+            "Morgen? Hast du eigentlich schon mal auf die Uhr geschaut?",
+            "Ich glaube die Batterie deiner Uhr ist schon wieder lehr...",
+            "Das mit dem Uhrenlesen über wir aber nochmal."
+        ],
+        "help": "`/morning` | Wishes me a good morning :slight_smile:",
+        "permissions": [],
+        "urls": []
+    },
+    "call": {
+        "replies": [
+            "{name} hat einen weiteren Drohanruf erhalten!",
+            "Wer ruft denn da bei {name} an?",
+            "Das FBI ruft schon wieder bei {name} an.",
+            "Wer wurde wohl bei {name} entführt?",
+            "{name} muss wohl etwas Lösegeld sammeln...",
+            "Sollte ich eigentlich aufhören, dich anzurufen, {mention}?",
+            "Was hast du denn schon wieder angestellt, {metnion}?"
+        ],
+        "help": "`/call` | Simply counts up how often you were called while chilling in a Discord call.",
+        "permissions": [],
+        "urls": []
+    },
+    "langeweile": {
+        "replies": [
+            "Etwas inspirierendes für eine Geschichte oder ein Bild:",
+            "Idee fürs Zeichnen oder Schreiben (Ich bin schon auf das Ergebnis gespannt):",
+            "Wie wäre es damit? Es hört sich nicht schlecht an.",
+            "Ich könnte dir das hier vorschlagen, {mention}. Was denkst du?",
+            "Um deine Schreib-/Zeichenlust zu wecken:",
+            "Na, mal wieder nichts zu tun? Hier eine Idee:",
+            "Nix besseres zu tun? Zeichne doch das hier und zeig uns dein Ergebnis!",
+            "Willkommen im Club, das ist jetzt deine Aufgabe:"
+        ],
+        "help": "`/langeweile` | Returns a scene or a character you could draw or write a story to.",
+        "permissions": [],
+        "urls": []
+    },
+    "quit": {
+        "replies": [
+            "Herunterfahren...",
+            "Bis zum nächsten Mal!",
+            "Ich gehe jetzt erst mal schlafen...",
+            "Hey, wer hat mir den Strom AbgEDRehhHh...",
+            "Ich mach dann mal Urlaub.",
+            "Endlich Ruhe.",
+            "Nachtinacht",
+            "Du hast mir gar nichts zu sAgEeee...",
+            "Lebe wohl, du schöne Welt.",
+            "Yeah, Urlaub! Ab nach Hawaii!"
+        ],
+        "unauthorised": [
+            "Ich habe leider noch etwas zu erledigen.",
+            "Geh doch selbst!",
+            "Ich bleibe aber viel lieber bei euch!",
+            "Besser nicht, wer passt denn sonst auf euch auf?",
+            "So schnell wirst du mich leider nicht los",
+            "Error in line 153 - [Error 400] no permission!"
+        ],
+        "help": "`/quit` | Shuts down the bot. Beware, the bot can only be startet from console again!",
+        "permissions": [],
+        "urls": []
+    },
+    "commands": {
+        "replies": [
+            "Ich will dich nicht enttäuschen, aber hast dieser Befehl existiert nicht mehr.",
+            "Das darf ich dir leider nicht mehr beantworten, {mention}. Versuche es mit `/`.",
+            "Versuche es doch mal mit den neuen Slash-Commands.",
+            "Ich habe einen kleinen Tipp für dich: Tippe mal `/` und sieh was passiert.",
+            "Ja, das waren mal Zeiten, {mention}. Aber nutze doch mal `/`."
+        ],
+        "help": "`/commands` | This command is deprecated. Type `/` to see all available commands.",
+        "permissions": [],
+        "urls": []
+    },
+    "kick": {
+        "replies": [
+            "Alles klar, ich habe {ref_mention} entfernt.",
+            "Auch wenn es mir schwer fällt... Ich habe {ref_mention} rausgeworfen.",
+            "So schlimm? Na gut. {ref_mention}, würdest du bitte mit mir kommen?",
+            "Hast du schwierigkeiten den Button fürs Auflegen zu finden {ref_mention}? Komm, ich helfe dir!",
+            "Da geht dir wohl jemand auf die Nervern...",
+            "Tschüss, {ref_mention}.",
+            "Willkommen bei Ava Airlines, wir wünschen einen guten Flug!"
+        ],
+        "unauthorised": [
+            "Pass auf, sonst tret ich gleich zurück!",
+            "Dafür trägst du leider nicht die passenden Schuhe.",
+            "Nein! Warum? Weil!",
+            "Also wirklich, was würde Mama denn dazu sagen?",
+            "Nein, das dürfen nur staatlich annerkannte Kicker",
+            "Also bitte, wer mach denn sowas?",
+            "How uncivilised..."
+        ],
+        "help": "`/kick <mention>` | Kicks the mentioned user from the voice channel he is in. (Should require special permissions)",
+        "permissions": [],
+        "urls": []
+    },
+    "pause": {
+        "replies": [
+            "Ich bin nun erst mal nicht mehr ansprechbar.",
+            "Alles klar, ich mache dann mal eine Pause.",
+            "Okay, ich bin nun Stummgeschaltet.",
+            "Auch wenn es mir weh tut, du wirst wohl deine Gründe haben.",
+            "Endlich, bezahlter Urlaub. Bis daaaaannn!"
+        ],
+        "unauthorised": [
+            "Ich bin ein Roboter, ich mache keine Pausen!",
+            "Danke, aber nein.",
+            "Und du denkst du kriegst mich so einfach los? Pah!",
+            "Nichts da, ich habe doch gerade erst angefangen!",
+            "Warum wollen mich immer alle loswerden :cry:?"
+        ],
+        "help": "`/pause` | Pauses the bot. It will no longer reply to commands.",
+        "permissions": [],
+        "urls": []
+    },
+    "resume": {
+        "replies": [
+            "Schön, dass ich weider ein Teil eurer Runde sein darf!",
+            "Es fühlt sich gut an, wieder zurück zu sein.",
+            "*Gähn*, das Päuschen hat gut getan, jetzt bin ich wieder voll dabei!",
+            "Ich bin zurück und offen für eure Anfragen.",
+            "Kann jemand Back In Black spielen? Ich habe extra meinen Anzug gewechselt...",
+            "Da bin ich wieder, ich hoffe ihr habt mich nicht vermisst.",
+            "Auch wenn es nur kurz war: Ich habe euch vermisst!",
+            "System wird hochgefahren... Parameter werden initialisiert... Hi!",
+            "Mensch, jetzt hast du mich geweckt!",
+            "Na, habt ihr mich vermisst?"
+        ],
+        "unauthorised": [],
+        "help": "`/resume` | Unpauses the bot. It will react to commands again.",
+        "permissions": [],
+        "urls": []
+    },
+    "order66": {
+        "replies": ["Copy that!"],
+        "help": "",
+        "permissions": [],
+        "urls": []
+    },
+    "grrr": {
+        "replies": [
+            "Hey {name}, ich kann dir Anti-Aggressionstherapien im Umkreis von 20 km empfehlen:",
+            "Ok, erst durch die Nase ein, dann durch den Mund ausatmen... Ja hallo? Polizei?",
+            "Tiefenentspannt, hm? Versuchs mal damit:",
+            "Wie gehts uns denn heute so... Ok,ok, schon gut, hier hast du deine Süßigkeiten wieder.",
+            "Bei weiteren Beschwerden fragen sie ihren Arzt- oder Apothekerbot",
+            "Hast du ein Glück, dass ich eine zertifizierte Therapeutin bin. Was man heutzutage alles im Internet bekommt...",
+            "Schon wieder mit dem falschen Fuß aufgestanden?",
+            "Hey, lass deinen Frust doch nicht an mir aus!"
+        ],
+        "help": "`/grrr` | Suggests you Anti-Aggression Therapy. Why? Ask Hanna!",
+        "permissions": [],
+        "urls": []
+    },
+    "idiot": {
+        "replies": [
+            "Es scheint wohl so, als würde {mention} das nicht so feiern, {ref_mention}.",
+            "{mention} möchte dir, {ref_mention}, wohl mitteilen, dass das nicht die beste Reaktion war.",
+            "Das scheint wohl nicht so gut gelaufen zu sein, {ref_mention}.",
+            "Ich glaube, dass dir {mention} damit etwas sagen möchte, {ref_mention}",
+            "{mention} hat wohl das starke Bedürfnis dir in den Hintern zu treten, {ref_mention}",
+            "Herzlichen Glückwunsch, Sie haben die Wahl zum Vollpfosten vom Dienst gewonnen, {ref_mention}",
+            "Du würdest auch deine Suppe mit der Gabel essen, oder, {ref_mention}"
+        ],
+        "help": "`/idiot (reffering to a message)` | Give the person an anti-award for stuff that they posted.",
+        "permissions": [],
+        "urls": []
+    },
+    "idiots": {
+        "replies": [
+            "Das sind die Deppen vom Dienst:",
+            "Na, wer ist denn der größte Idiot?",
+            "Hmmm? Musst du etwa nachschauen ob dich jemand übertrumpft hat?",
+            "Unsere servereigenen Idioten aus bester Haltung:",
+            "Es kann nicht nur einen geben:",
+            "Willkommen im Club, hier ist unsere Mitgliederliste:"
+        ],
+        "help": "`/idiots` | Shows how often all server members were called idiots.",
+        "permissions": [],
+        "urls": []
+    },
+    "eating": {
+        "replies": [
+            "Na dann wünsche ich einen guten Appetit. Deine Zeit läuft, {mention}",
+            "N' Guten, was gibt es denn heute? (Ich habe deinen Timer für dich gestartet, {mention})",
+            "Das ist eine gute Idee, ich habe auch Hunger. Leider kann ich aber nichts essen. Deinen Timer habe ich trotzdem gestartet",
+            "Deine Zeit läuft, {mention}. Man sieht sich später wieder.",
+            "Mal sehen wie lange du brauchst. Deine Zeit läuft!"
+        ],
+        "help": "`/eating` | Starts and stops your eating timer and shows you how long it took you to eat.",
+        "permissions": [],
+        "urls": []
+    },
+    "eatingstats": {
+        "replies": [
+            "Einen Moment, ich schau mal nach. Ah ja, hier:",
+            "Warum willst du das denn wissen? Statistikfreak, ich seh schon.",
+            "Ich musste das grade schnell im Kopf rechnen, ich hoffe das passt:",
+            "Tada, hier hast du die Zahlen:"
+        ],
+        "help": "`/eatingstats (<mention>)` | Returns how often somebody ate and the average eatingtime. Without mentioning it returns these stats for all people on the server.",
+        "permissions": [],
+        "urls": []
+    },
+    "internet": {
+        "replies": [
+            "Hmmm, was ist das denn?",
+            "Hallooo? Haallo? Tut mir leid, ich glaube, es ist grade nicht zuhause",
+            "Einen Moment, ich lade dir schnell mehr Bandbreite herunter...",
+            "Lass mich einen kurzen Scan ausführen... Nein, das ist bei dir leider nicht verfügbar.",
+            "Och neee, heute eher weniger. Aber komm doch morgen mal vorbei.",
+            "Öh, und jetzt? Ich bin doch kein W-Lan Router!"
+        ],
+        "help": "`/internet` | Returns a funny answer to help you getting over the fact that you're not having a good connection.",
+        "permissions": [],
+        "urls": []
+    },
+    "ping": {
+        "replies": [
+            "Pong! {insert}",
+            "Peng! {insert}",
+            "Pang {insert}",
+            "Öh, ähm, ping? {insert}",
+            "So schnell bin ich: {insert}",
+            "Pung! {insert}"
+        ],
+        "help": "`/ping` | Shows you the ping of the bot in ms.",
+        "permissions": [],
+        "urls": []
+    },
+    "verse": {
+        "replies": [],
+        "help": "`/verse` | A random bible verse to lift him up.",
+        "permissions": [],
+        "urls": ["https://dailyverses.net/de/zufalls-bibelvers/neu"]
+    },
+    "delete": {
+        "replies": [],
+        "unauthorised": [
+            "Sorry, aber das ist nicht für dich gedacht!",
+            "DENIED!",
+            "Ich sehe dafür keine Notwendigkeit.",
+            "Bitte wende dich dazu an berechtigte Nutzer",
+            "Will da jemand was vertuschen? Nicht mit mir!",
+            "Da muss ich dich leider enttäuschen...",
+            "Tut mir Leid, aber ich darf dich das nicht machen lassen.",
+            "Muss das denn so dringend weg?"
+        ],
+        "help": "`/delete (referring to a message)` | I guess you can figure out what that does...",
+        "permissions": [],
+        "urls": []
+    },
+    "quote": {
+        "replies": [
+            "Hier, ein inspirierendes Zitat:",
+            "Erstaunlich zu welchen Leistungen das menschliche Gehirn fähig ist...",
+            "Wie wahr, wie wahr...",
+            "Kannst du dem zustimmen?",
+            "Lebensweisheiten aus der Konserve:",
+            "Etwas schlaues, um die Dummheit auszugleichen:",
+            "Von Mensch zu Mesnch:"
+        ],
+        "help": "`/quote` | Returns a random quote of somebody way smarter that us.",
+        "permissions": [],
+        "urls": ["http://zitate.net/zuf%C3%A4llige-zitate"]
+    },
+    "timer": {
+        "replies": [
+            "Und los geht's!",
+            "Auf die Plätze, fertig, los!",
+            "Uuuuund los!",
+            "Deine Zeit läuft!",
+            "Alles klar, die Zeit läuft ab... jetzt!",
+            "5, 4, 3, 2, 1, liftoff!",
+            "Die Zeit läuft!"
+        ],
+        "fast": [
+            "Wow, {insert} und schon fertig?",
+            "Das war aber schnell: {insert}!",
+            "{insert}. So schnell konnte ich ja kaum stopp drücken!"
+        ],
+        "slow": [
+            "{insert}. Das hat ja eeewig gedauert!",
+            "Das habe ich aber schon deutlich schneller gesehen... Deine Zeit: {insert}.",
+            "Kann es sein, dass du mit Schnecken verwandt bist? {insert}.",
+            "Was auch immer du gestoppt hast, schnell war es nicht: {insert}.",
+            "*Gähn*, was? Auch mal fertig? Na schön. Deine Zeit: {insert}."
+        ],
+        "help": "`/timer <number>` | Starts and stops the selected Timer. Possible options for parameters: 1, 2, 3.",
+        "permissions": [],
+        "urls": []
+    }
+}

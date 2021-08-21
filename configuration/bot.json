@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "file_not_found": "Ich konnte leider die Datei {insert} nicht finden.",
+    "command_not_found": [
+      "Das kenne ich leider nicht.",
+      "Sorry, dafür bin ich bis jetzt noch nicht programmiert",
+      "Ich weiß leider nicht was du meinst...",
+      "Weißt du von etwas, von dem ich nicht weiß?",
+      "Error in line 0815 - [Error 440] command not found!",
+      "Bist du sicher, dass du dich nicht verschrieben hast?",
+      "Hm, sorry ich bin mir nicht sicher was du mir damit sagen willst...",
+      "as kann ich nicht, bitte wende dich an meinen Programmierer, wenn du dies für eine notwendige Funktion hälst",
+      "Dazu hat meine Datenbank leider eine Einträge."
+    ],
+    "error": [
+      "Entschuldigung, da ist etwas schief gelaufen: {insert}",
+      "Mist, das wollte ich nicht. Verzeihst du mir? {insert}",
+      "Ich glaube ich rieche Rauch, das kann nicht gut sein! {insert}",
+      "Oh nein, Katastrophe! Das ist passiert: {insert}"
+    ]
+  }
+}
