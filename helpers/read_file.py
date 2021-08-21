@@ -24,7 +24,6 @@ def read_command_config():
 
 
 def read_guild_config(guild_id: int):
-    # Read json
     with open(f'guilds/{guild_id}/config.json', 'r') as f:
         return json.load(f)
 
@@ -32,3 +31,8 @@ def read_guild_config(guild_id: int):
 def read_file(path: str):
     with open(path, 'r') as file:
         return file.read()
+
+
+def read_credentials():
+    with open('credentials.json', 'r') as f:
+        return json.load(f)

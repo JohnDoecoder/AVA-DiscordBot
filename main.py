@@ -6,6 +6,7 @@ from discord import guild
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_choice, create_option
 
+import praw
 import datetime
 
 import command_logic
@@ -13,15 +14,21 @@ import helpers.write_file
 from helpers import read_file, replies, write_file
 from command_logic import dice as dice_logic, cointoss as coin_logic, image, quote, verse, delete
 
+DEF_COLOR = 0x0089a1
+
 intents = discord.Intents().all()
 client = commands.Bot(command_prefix='!', intents=intents)
 slash = SlashCommand(client, sync_commands=True)
-token = 'TOKEN'
 
-DEF_COLOR = 0x0089a1
+# Credentials------------------------------------------------------
+credentials = read_file.read_credentials()
+token = credentials["discord"]["token"]
+reddit = praw.Reddit(client_id=credentials["reddit"]["id"],
+                     client_secret='credentials["reddit"]["secret"]',
+                     user_agent='credentials["reddit"]["agent"]',
+                     check_for_async=False)
 
-# -----------------------------------------------------------------
-
+# Initialize-------------------------------------------------------
 
 commands = read_file.read_command_config()
 guilds = []
