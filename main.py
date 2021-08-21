@@ -14,6 +14,7 @@ import helpers.write_file
 from helpers import read_file, replies, write_file
 from command_logic import dice as dice_logic, cointoss as coin_logic, image, quote, verse, delete, meme
 
+
 # Constants -------------------------------------------------------
 
 DEF_COLOR = 0x0089a1
