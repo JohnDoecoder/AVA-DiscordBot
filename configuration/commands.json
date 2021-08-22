@@ -94,7 +94,7 @@
             "Just made my day! Thx {ref_mention}",
             "Wie ich sehe sammelt {ref_mention} fleißig Medallien!"
         ],
-        "help": "`/award (refering to message)` | Gives the author of the message you referred to an award.",
+        "help": "`/award <mention>` | Gives the mentioned user an award.",
         "permissions": [],
         "urls": []
     },

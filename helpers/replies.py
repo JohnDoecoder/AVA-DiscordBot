@@ -1,8 +1,8 @@
 from random import randint
 
 
-def enrich_replies(reply, name=None, ref_name=None, prefix=None, insert=None, insert2=None, addon=None, mention=None,
-                   ref_mention=None, channel=None, start=None, url=None, search=None):
+def enrich(reply, name=None, ref_name=None, prefix=None, insert=None, insert2=None, addon=None, mention=None,
+           ref_mention=None, channel=None, start=None, url=None, search=None):
     if name:        reply = reply.replace('{name}', name)
     if ref_name:    reply = reply.replace('{ref_name}', ref_name)
     if prefix:      reply = reply.replace('{prefix}', prefix)

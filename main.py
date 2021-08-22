@@ -9,10 +9,9 @@ from discord_slash.utils.manage_commands import create_choice, create_option
 import praw
 import datetime
 
-import command_logic
-import helpers.write_file
 from helpers import read_file, replies, write_file
-from command_logic import dice as dice_logic, cointoss as coin_logic, image, quote, verse, delete, meme
+import command_logic as logic
+from command_logic import meme, award, image, verse, quote, delete, cointoss, dice
 
 
 # Constants -------------------------------------------------------
@@ -21,7 +20,7 @@ DEF_COLOR = 0x0089a1
 PREFIX = '!'
 
 # Credentials -----------------------------------------------------
-credentials = read_file.read_credentials()
+credentials = read_file.read_json('configuration/credentials.json')
 token = credentials["discord"]["token"]
 reddit = praw.Reddit(client_id=credentials["reddit"]["id"],
                      client_secret=credentials["reddit"]["secret"],
@@ -36,11 +35,12 @@ slash = SlashCommand(client, sync_commands=True)
 
 commands = read_file.read_command_config()
 guilds = []
+author = ""
 
 # -----------------------------------------------------------------
 
 
-def log(author: str, channel: str, message: str, other: str, guild: discord.Guild = None):
+def log(author: str, channel: str, message: str, other: str, guild=None):
     time = datetime.datetime.now()
 
     # 2021-05-21 16:38:27 | (user in channel) - This is a message
@@ -55,6 +55,13 @@ def log(author: str, channel: str, message: str, other: str, guild: discord.Guil
             logfile.write(entry)
         print('Direct Message:\n' + entry)
 
+
+def get_name(member: discord.member):
+    if member.nick:
+        return member.nick
+    else:
+        return member.name
+
 # -----------------------------------------------------------------
 
 
@@ -63,7 +70,7 @@ async def on_ready():
     global guilds
     guilds = client.guilds
     for guild in guilds:
-        helpers.write_file.write_guild_config(guild, ["logs", "temp", "user"])
+        write_file.write_guild_config(guild, ["logs", "temp", "user"])
 
     print(f'I am logged in ({client.user}) and ready!')
 
@@ -71,7 +78,7 @@ async def on_ready():
 
 
 @client.event
-async def on_message(message):
+async def on_message(message: discord.Message):
     o = ''
     if not message.content:
         o = '[media or embed]'
@@ -80,6 +87,9 @@ async def on_message(message):
         log(message.author.name, message.channel.name, message.content, other=o, guild=message.guild)
     else:
         log(message.author.name, message.channel.name, message.content, other=o)
+
+    global author
+    author = get_name(message.author)
 
     await client.process_commands(message)
 
@@ -92,7 +102,7 @@ async def on_message(message):
     guild_ids=guilds
 )
 async def _hello(ctx):
-    message = replies.enrich_replies(
+    message = replies.enrich(
         replies.get_reply(commands[ctx.name].replies), mention=ctx.author.mention)
     await ctx.send(message)
 
@@ -170,6 +180,23 @@ async def _meme(ctx):
 
 
 @slash.slash(
+    name='award',
+    description='Reward somebody with an award',
+    guild_ids=guilds,
+    options=[
+        create_option(
+            name="mention",
+            description="Mention somebody with @Name",
+            required=True,
+            option_type=3
+        )
+    ]
+)
+async def _award(ctx, command=None):
+    await award(ctx, command)
+
+
+@slash.slash(
     name='help',
     description='Shows you how to use a command',
     guild_ids=guilds,
@@ -210,16 +237,45 @@ async def _help(ctx, command=None):
 
 @client.command()
 async def dice(ctx):
-    message = replies.enrich_replies(
+    message = replies.enrich(
         replies.get_reply(commands[ctx.invoked_with].replies),
-        insert=dice_logic.dice_toss(),
-        mention=ctx.author.mention)
+        insert=logic.dice.dice_toss(),
+        mention=ctx.author.mention
+    )
     await ctx.send(message)
 
 
 @client.command()
+async def award(ctx, *args):
+    if len(args) != 1 or not (args[0].startswith('<@!') and args[0].endswith('>')):
+        await ctx.send('Error')  # TODO: Read reply from bot.json
+        return
+
+    medal = "https://cdn.discordapp.com/attachments/724745384840396953/879030788723724398/olympic_medal1600.png"
+
+    # Give award
+    logic.award.give_award(ctx.message.guild.id, args[0][3:-1])
+
+    # Get message
+    message = replies.enrich(
+        replies.get_reply(commands[ctx.invoked_with].replies),
+        ref_mention=args[0],
+        mention=ctx.message.author.mention
+    )
+
+    # Create embed
+    embed_var = discord.Embed(
+        color=discord.Colour(DEF_COLOR),
+        description=message
+    )
+    embed_var.set_author(name=f"Award für {get_name(ctx.message.author)}", icon_url=medal)
+
+    await ctx.send(embed=embed_var)
+
+
+@client.command()
 async def meme(ctx):
-    meme_object = command_logic.meme.get_meme(reddit, ctx.message.guild.id)
+    meme_object = logic.meme.get_meme(reddit, ctx.message.guild.id)
     embed_var = discord.Embed(title='Meme', color=discord.Colour(DEF_COLOR))
     embed_var.set_image(url=meme_object.url)
     embed_var.add_field(
@@ -232,7 +288,7 @@ async def meme(ctx):
 
 @client.command()
 async def quote(ctx):
-    message = command_logic.quote.get_quote(commands[ctx.invoked_with].urls[0])
+    message = logic.quote.get_quote(commands[ctx.invoked_with].urls[0])
     embed_var = discord.Embed(title='Zitat', color=discord.Colour(DEF_COLOR))
     embed_var.add_field(name=message[1], value=message[0], inline=True)
     await ctx.send(embed=embed_var)
@@ -240,7 +296,7 @@ async def quote(ctx):
 
 @client.command()
 async def verse(ctx):
-    message = command_logic.verse.get_verse(commands[ctx.invoked_with].urls[0])
+    message = logic.verse.get_verse(commands[ctx.invoked_with].urls[0])
     embed_var = discord.Embed(title='Bibelvers', color=discord.Colour(DEF_COLOR))
     embed_var.add_field(name=message[1], value=message[0], inline=True)
     await ctx.send(embed=embed_var)
@@ -248,9 +304,9 @@ async def verse(ctx):
 
 @client.command()
 async def cointoss(ctx):
-    message = replies.enrich_replies(
+    message = replies.enrich(
         replies.get_reply(commands[ctx.invoked_with].replies),
-        insert=coin_logic.coin_toss(),
+        insert=logic.cointoss.coin_toss(),
         mention=ctx.author.mention)
     await ctx.send(message)
 
@@ -258,18 +314,20 @@ async def cointoss(ctx):
 @client.command()
 async def cat(ctx):
     # Get the image
-    file = image.from_url(f'guilds/{ctx.guild.id}/temp/cat.png', replies.get_reply(commands[ctx.invoked_with].urls))
+    file = logic.image.from_url(f'guilds/{ctx.guild.id}/temp/cat.png',
+                                replies.get_reply(commands[ctx.invoked_with].urls))
 
     message = replies.get_reply(commands[ctx.invoked_with].replies)
     embed_var = discord.Embed(title='Cat', color=discord.Colour(DEF_COLOR), description=message)
-    embed_var.set_image(url=f"attachment://image.png")
+    embed_var.set_image(url="attachment://image.png")
     await ctx.send(file=file, embed=embed_var)
 
 
 @client.command()
 async def person(ctx):
     # Get the image
-    file = image.from_url(f'guilds/{ctx.guild.id}/temp/person.png', replies.get_reply(commands[ctx.invoked_with].urls))
+    file = logic.image.from_url(f'guilds/{ctx.guild.id}/temp/person.png',
+                                replies.get_reply(commands[ctx.invoked_with].urls))
 
     message = replies.get_reply(commands[ctx.invoked_with].replies)
     embed_var = discord.Embed(title='Person', color=discord.Colour(DEF_COLOR), description=message)
@@ -279,7 +337,7 @@ async def person(ctx):
 
 @client.command()
 async def delete(ctx):
-    await command_logic.delete.delete_message(ctx)
+    await logic.delete.delete_message(ctx)
 
 
 # -----------------------------------------------------------------
