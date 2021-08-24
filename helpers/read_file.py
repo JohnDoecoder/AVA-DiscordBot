@@ -10,18 +10,8 @@ def read_command_config():
     with open('configuration/commands.json', 'r') as f:
         cmd = json.load(f)
 
-    # dict from json to command object
-    for key in cmd:
-        command_object = command.Command(
-            name=key,
-            replies=cmd[key]['replies'],
-            help=cmd[key]['help'],
-            urls=cmd[key]['urls'],
-            permissions=cmd[key]['permissions']
-        )
-        command_config[key] = command_object
-
-    return command_config
+    # return command_config
+    return cmd
 
 
 def read_file(path: str):
