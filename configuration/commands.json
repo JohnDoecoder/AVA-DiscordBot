@@ -123,9 +123,28 @@
             "Nicht schon wieder! Na gut, versuch es mal damit:",
             "Beim Surfen habe ich das hier für dich gefunden:"
         ],
+        "replies2": [
+            "Dazu konnte ich leider nichts finden, aber vielleicht hilft dir ja das:",
+            "Hmmm, so wie ich das sehe kennt Wikipedia das nicht, aber du kannst ja mal hier schauen:",
+            "Dazu gibt es keine Seite auf Wikipedia, aber hier ist die Suche:",
+            "Das konnte ich leider nicht finden. Aber vielleicht wirst du ja trotzdem fündig:",
+            "Hast du dch vertippt? Oder suchst du etwas spezielles? Hier ist die Suche:",
+            "[Error 440] Site does not exist! Aber schau dir doch mal die Suche an:",
+            "Auch wenn ich nichts finden konnte, vielleicht habe ich ja etwas übersehen:"
+        ],
+        "error": [
+            "Wie soll ich denn nach nichts suchen?",
+            "Entschuldigung, aber du musst mir schon sagen nachw as ich suchen soll...",
+            "Hast du da nicht einen Suchbegriff vergessn?",
+            "Da fehlt mir leider etwas, versuch es nochmal.",
+            "Kein Suchbegriff, keine Suche. Keine Suche, kein Ergebnis.",
+            "Ich weiß ja nicht wie du dir das vorstellts, aber so funktioniert das nicht!",
+            "Willst du mich ärgern oder was soll ich damit anfangen?",
+            "Ich muss dich enttäuschen, da fehlt etwas."
+        ],
         "help": "`/wiki <searchword>` | Shows you the wiki article of your word. If there is no article it will return the wiki search.",
         "permissions": [],
-        "urls": ["https://wikipedia.de/", "https://de.wikipedia.org/w/index.php?search="]
+        "urls": ["https://de.wikipedia.org"]
     },
     "offtopic": {
         "replies": [

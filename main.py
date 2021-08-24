@@ -11,12 +11,13 @@ import datetime
 
 from helpers import read_file, replies, write_file
 import command_logic as logic
-from command_logic import meme, award, image, verse, quote, delete, cointoss, dice
+from command_logic import meme, award, image, verse, quote, delete, cointoss, dice, wiki
 
 
 # Constants -------------------------------------------------------
 
 DEF_COLOR = 0x0089a1
+RED_COLOR = 0x800000
 PREFIX = '!'
 
 # Credentials -----------------------------------------------------
@@ -180,6 +181,23 @@ async def _meme(ctx):
 
 
 @slash.slash(
+    name='wiki',
+    description='Search for something on wikipedia.',
+    guild_ids=guilds,
+    options=[
+        create_option(
+            name="term",
+            description="The thing you want to know something about.",
+            required=True,
+            option_type=3
+        )
+    ]
+)
+async def _wiki(ctx):
+    await wiki(ctx)
+
+
+@slash.slash(
     name='award',
     description='Reward somebody with an award',
     guild_ids=guilds,
@@ -246,6 +264,36 @@ async def dice(ctx):
 
 
 @client.command()
+async def wiki(ctx, arg):
+    # Test for params
+    if not arg:
+        embed_var = discord.Embed(
+            title='Error',
+            color=discord.Colour(RED_COLOR),
+            description=replies.get_reply(commands[ctx.invoked_with]['error'])
+            )
+
+    link = logic.wiki.get_wiki(commands[ctx.invoked_with]['urls'][0], arg)
+
+    # Get reply depending on if the site exists
+    if 'search' in link:
+        message = replies.enrich(replies.get_reply(commands[ctx.invoked_with]['replies2']))
+    else:
+        message = replies.enrich(replies.get_reply(commands[ctx.invoked_with]['replies']))
+
+    # Create embed
+    embed_var = discord.Embed(
+        title=message,
+        color=discord.Colour(DEF_COLOR),
+        description=link)
+    embed_var.set_author(
+        name='Wikipedia',
+        icon_url='https://pngimg.com/uploads/wikipedia/wikipedia_PNG16.png')
+
+    await ctx.send(embed=embed_var)
+
+
+@client.command()
 async def award(ctx, *args):
     if len(args) != 1 or not (args[0].startswith('<@!') and args[0].endswith('>')):
         await ctx.send('Error')  # TODO: Read reply from bot.json
@@ -288,7 +336,7 @@ async def meme(ctx):
 
 @client.command()
 async def quote(ctx):
-    message = logic.quote.get_quote(commands[ctx.invoked_with].urls[0])
+    message = logic.quote.get_quote(commands[ctx.invoked_with]['urls'][0])
     embed_var = discord.Embed(title='Zitat', color=discord.Colour(DEF_COLOR))
     embed_var.add_field(name=message[1], value=message[0], inline=True)
     await ctx.send(embed=embed_var)
@@ -296,7 +344,7 @@ async def quote(ctx):
 
 @client.command()
 async def verse(ctx):
-    message = logic.verse.get_verse(commands[ctx.invoked_with].urls[0])
+    message = logic.verse.get_verse(commands[ctx.invoked_with]['urls'][0])
     embed_var = discord.Embed(title='Bibelvers', color=discord.Colour(DEF_COLOR))
     embed_var.add_field(name=message[1], value=message[0], inline=True)
     await ctx.send(embed=embed_var)
@@ -315,7 +363,7 @@ async def cointoss(ctx):
 async def cat(ctx):
     # Get the image
     file = logic.image.from_url(f'guilds/{ctx.guild.id}/temp/cat.png',
-                                replies.get_reply(commands[ctx.invoked_with].urls))
+                                replies.get_reply(commands[ctx.invoked_with]['urls']))
 
     message = replies.get_reply(commands[ctx.invoked_with].replies)
     embed_var = discord.Embed(title='Cat', color=discord.Colour(DEF_COLOR), description=message)
@@ -327,7 +375,7 @@ async def cat(ctx):
 async def person(ctx):
     # Get the image
     file = logic.image.from_url(f'guilds/{ctx.guild.id}/temp/person.png',
-                                replies.get_reply(commands[ctx.invoked_with].urls))
+                                replies.get_reply(commands[ctx.invoked_with]['urls']))
 
     message = replies.get_reply(commands[ctx.invoked_with].replies)
     embed_var = discord.Embed(title='Person', color=discord.Colour(DEF_COLOR), description=message)
