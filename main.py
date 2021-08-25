@@ -104,7 +104,7 @@ async def on_message(message: discord.Message):
 )
 async def _hello(ctx):
     message = replies.enrich(
-        replies.get_reply(commands[ctx.name].replies), mention=ctx.author.mention)
+        replies.get_reply(commands[ctx.name]['replies']), mention=ctx.author.mention)
     await ctx.send(message)
 
 
@@ -193,8 +193,8 @@ async def _meme(ctx):
         )
     ]
 )
-async def _wiki(ctx):
-    await wiki(ctx)
+async def _wiki(ctx, term=None):
+    await wiki(ctx, term)
 
 
 @slash.slash(
@@ -210,8 +210,8 @@ async def _wiki(ctx):
         )
     ]
 )
-async def _award(ctx, command=None):
-    await award(ctx, command)
+async def _award(ctx, mention=None):
+    await award(ctx, mention)
 
 
 @slash.slash(
@@ -256,7 +256,7 @@ async def _help(ctx, command=None):
 @client.command()
 async def dice(ctx):
     message = replies.enrich(
-        replies.get_reply(commands[ctx.invoked_with].replies),
+        replies.get_reply(commands[ctx.invoked_with]['replies']),
         insert=logic.dice.dice_toss(),
         mention=ctx.author.mention
     )
@@ -302,13 +302,13 @@ async def award(ctx, *args):
     medal = "https://cdn.discordapp.com/attachments/724745384840396953/879030788723724398/olympic_medal1600.png"
 
     # Give award
-    logic.award.give_award(ctx.message.guild.id, args[0][3:-1])
+    logic.award.give_award(ctx.channel.guild.id, args[0][3:-1])
 
     # Get message
     message = replies.enrich(
-        replies.get_reply(commands[ctx.invoked_with].replies),
+        replies.get_reply(commands[ctx.invoked_with]['replies']),
         ref_mention=args[0],
-        mention=ctx.message.author.mention
+        mention=ctx.author.mention
     )
 
     # Create embed
@@ -316,14 +316,14 @@ async def award(ctx, *args):
         color=discord.Colour(DEF_COLOR),
         description=message
     )
-    embed_var.set_author(name=f"Award für {get_name(ctx.message.author)}", icon_url=medal)
+    embed_var.set_author(name=f"Award von {get_name(ctx.author)}", icon_url=medal)
 
     await ctx.send(embed=embed_var)
 
 
 @client.command()
 async def meme(ctx):
-    meme_object = logic.meme.get_meme(reddit, ctx.message.guild.id)
+    meme_object = logic.meme.get_meme(reddit, ctx.channel.guild.id)
     embed_var = discord.Embed(title='Meme', color=discord.Colour(DEF_COLOR))
     embed_var.set_image(url=meme_object.url)
     embed_var.add_field(
@@ -353,7 +353,7 @@ async def verse(ctx):
 @client.command()
 async def cointoss(ctx):
     message = replies.enrich(
-        replies.get_reply(commands[ctx.invoked_with].replies),
+        replies.get_reply(commands[ctx.invoked_with]['replies']),
         insert=logic.cointoss.coin_toss(),
         mention=ctx.author.mention)
     await ctx.send(message)
@@ -365,7 +365,7 @@ async def cat(ctx):
     file = logic.image.from_url(f'guilds/{ctx.guild.id}/temp/cat.png',
                                 replies.get_reply(commands[ctx.invoked_with]['urls']))
 
-    message = replies.get_reply(commands[ctx.invoked_with].replies)
+    message = replies.get_reply(commands[ctx.invoked_with]['replies'])
     embed_var = discord.Embed(title='Cat', color=discord.Colour(DEF_COLOR), description=message)
     embed_var.set_image(url="attachment://image.png")
     await ctx.send(file=file, embed=embed_var)
@@ -377,7 +377,7 @@ async def person(ctx):
     file = logic.image.from_url(f'guilds/{ctx.guild.id}/temp/person.png',
                                 replies.get_reply(commands[ctx.invoked_with]['urls']))
 
-    message = replies.get_reply(commands[ctx.invoked_with].replies)
+    message = replies.get_reply(commands[ctx.invoked_with]['replies'])
     embed_var = discord.Embed(title='Person', color=discord.Colour(DEF_COLOR), description=message)
     embed_var.set_image(url=f"attachment://image.png")
     await ctx.send(file=file, embed=embed_var)

@@ -1,6 +1,5 @@
 import json
 import os
-from classes import command
 
 
 def read_command_config():
