@@ -15,7 +15,7 @@
     },
     "help": {
         "replies": [],
-        "help": "`/help <command>` | Shows you how to use the command.",
+        "help": "`/help <command>` | Shows you how to use a command.",
         "permissions": [],
         "urls": []
     },
@@ -134,7 +134,7 @@
         ],
         "error": [
             "Wie soll ich denn nach nichts suchen?",
-            "Entschuldigung, aber du musst mir schon sagen nachw as ich suchen soll...",
+            "Entschuldigung, aber du musst mir schon sagen, nachwas ich suchen soll...",
             "Hast du da nicht einen Suchbegriff vergessn?",
             "Da fehlt mir leider etwas, versuch es nochmal.",
             "Kein Suchbegriff, keine Suche. Keine Suche, kein Ergebnis.",
@@ -158,10 +158,14 @@
         "unauthorised": [
             "Will da jemand jemanden abschieben?",
             "Nein, nein und nochmals nein!",
-            "Wenn du das so schlimm findest wende dich doch bitte an jemanden der das darf."
+            "Wenn du das so schlimm findest wende dich doch bitte an jemanden der das darf.",
+            "Leider hast du dafür nicht die nötigen Berechtigungen.",
+            "Mir wurde gesagt, dass ich dich das nicht machen lassen darf. Sorry.",
+            "With great power comes great responsibility. Und anscheinend hast du diese nicht...",
+            "Ich muss dich enttäuschen: Das darfst du nicht."
         ],
         "help": "`/offtopic <textchannel mention> (referring to a message)` | Deletes the reffered message and moves it to the mentioned channel.",
-        "permissions": [675076564085637132, 509706417251549184],
+        "permissions": [],
         "urls": []
     },
     "morning": {
@@ -399,12 +403,12 @@
     },
     "ping": {
         "replies": [
-            "Pong! {insert}",
-            "Peng! {insert}",
-            "Pang {insert}",
-            "Öh, ähm, ping? {insert}",
-            "So schnell bin ich: {insert}",
-            "Pung! {insert}"
+            "Pong! **{insert}**.",
+            "Peng! **{insert}**.",
+            "Pang **{insert}**.",
+            "Öh, ähm, ping? **{insert}**.",
+            "So schnell bin ich: **{insert}**.",
+            "Pung! **{insert}**."
         ],
         "help": "`/ping` | Shows you the ping of the bot in ms.",
         "permissions": [],
@@ -415,6 +419,12 @@
         "help": "`/verse` | A random bible verse to lift him up.",
         "permissions": [],
         "urls": ["https://dailyverses.net/de/zufalls-bibelvers/neu"]
+    },
+    "translate": {
+        "replies": [],
+        "help": "`/translate` <language> <word>| Translate a word into your desired language.",
+        "permissions": [],
+        "urls": ["https://deepl.com"]
     },
     "delete": {
         "replies": [],
@@ -427,6 +437,15 @@
             "Da muss ich dich leider enttäuschen...",
             "Tut mir Leid, aber ich darf dich das nicht machen lassen.",
             "Muss das denn so dringend weg?"
+        ],
+        "error": [
+            "Du musst mir schon sagen, was ich löschen soll.",
+            "Ich könnte jetzt eine zufällige Nachricht löschen, aber einigen wir uns darauf, dass du mir sagst welche.",
+            "Leider kann ich noch nicht hellsehen, welche Nachricht du löschen willst...",
+            "Bitte gib die Nachricht an, die du löschen willst.",
+            "Reagiere auf die Nachricht die ich löschen soll.",
+            "Ich kann kann nicht erkennen welche Nachricht ich löschen soll. Bitte hilf mir.",
+            "Ich glaube du hast da eine Kleinigkeit vergessen..."
         ],
         "help": "`/delete (referring to a message)` | I guess you can figure out what that does...",
         "permissions": [],
