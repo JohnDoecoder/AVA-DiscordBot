@@ -1,4 +1,5 @@
 from random import randint
+from discord import Embed
 
 
 def enrich(reply, name=None, ref_name=None, prefix=None, insert=None, insert2=None, addon=None, mention=None,

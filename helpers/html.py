@@ -15,6 +15,8 @@ def clean_text(text: str):
             clean += char
 
     # Replace line breaks tags
+    clean.replace('<br/><br/>', '\n')
+    clean.replace('<br><br>', '\n')
     clean.replace('<br/>', '\n')
     clean.replace('<br>', '\n')
 
