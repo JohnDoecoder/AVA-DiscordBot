@@ -1,16 +1,7 @@
 # TODO: Todo list
-DONE Logprint should also print the server
-DONE Searching for memes should be changed from recursive to while loop
-DONE Memes as embeds
-- Create Bug command to add bugs / bugs to show reported bugs
-DONE Fix offtopic
-DONE !offtopic should move all message content (also pictures and videos)
-- Change user stats on changes (user joins / leaves, user renames himself)
-  -> Join schould work, but delete on leave?
+- Write requirements.txt
+- !strike (3 strikes and out)
+- !stats command: Shows user stats like how many awards, idiots, strikes and gamestats
 - Logs should have image link instead of empty message when images are sent
-- Commands to change permissions
 - Command to change if bot should react to commands from other bots
-- add !coinflip
-- !Buh command - Plays loud sound in voice channel
-DONE Dm's from Admin with function (!say {server} {channel} {message})
 - (Add games like TicTacToe and RockPaperScissor)

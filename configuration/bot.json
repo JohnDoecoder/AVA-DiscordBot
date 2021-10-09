@@ -1,4 +1,5 @@
 {
+  "prefix": "?",
   "errors": {
     "file_not_found": "Ich konnte leider die Datei {insert} nicht finden.",
     "command_not_found": [
@@ -6,17 +7,56 @@
       "Sorry, dafür bin ich bis jetzt noch nicht programmiert",
       "Ich weiß leider nicht was du meinst...",
       "Weißt du von etwas, von dem ich nicht weiß?",
-      "Error in line 0815 - [Error 440] command not found!",
+      "Error in line 42 - [Error 404] command not found!",
       "Bist du sicher, dass du dich nicht verschrieben hast?",
       "Hm, sorry ich bin mir nicht sicher was du mir damit sagen willst...",
       "as kann ich nicht, bitte wende dich an meinen Programmierer, wenn du dies für eine notwendige Funktion hälst",
       "Dazu hat meine Datenbank leider eine Einträge."
     ],
     "error": [
-      "Entschuldigung, da ist etwas schief gelaufen: {insert}",
-      "Mist, das wollte ich nicht. Verzeihst du mir? {insert}",
-      "Ich glaube ich rieche Rauch, das kann nicht gut sein! {insert}",
-      "Oh nein, Katastrophe! Das ist passiert: {insert}"
+      "Entschuldigung, da ist etwas schief gelaufen:\n {insert}",
+      "Mist, das wollte ich nicht. Verzeihst du mir?\n {insert}",
+      "Ich glaube ich rieche Rauch, das kann nicht gut sein!\n {insert}",
+      "Oh nein, Katastrophe! Das ist passiert:\n {insert}"
+    ],
+    "unauthorised": [
+      "Für diesen Befehl hast du leider nicht die nötigen Berechtigungen."
+    ],
+    "wrong_args": [
+      "Der Befehl kann auf Grund falscher Parameter nicht ausgeführt werden."
     ]
-  }
+  },
+  "icons": {
+    "error": "https://freeiconshop.com/wp-content/uploads/edd/error-flat.png",
+    "warning": "https://www.iconsdb.com/icons/preview/orange/warning-xxl.png",
+    "medal": "https://cdn.discordapp.com/attachments/724745384840396953/879030788723724398/olympic_medal1600.png",
+    "idiot": "https://icon-library.com/images/bullshit-icon/bullshit-icon-29.jpg",
+    "perms": "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-error-icon.png",
+    "bible": "https://cdn3.vectorstock.com/i/1000x1000/06/57/bible-icon-vector-5020657.jpg",
+    "timer": "https://static.vecteezy.com/system/resources/previews/000/424/362/original/vector-stopwatch-icon.jpg",
+    "help": "https://image.freepik.com/free-icon/help-circled_318-10762.jpg",
+    "health": "https://www.freeiconspng.com/uploads/weight-loss-advices-4.png",
+    "drawing": "https://maxcdn.icons8.com/Share/icon/nolan/diy/paint_brush1600.png"
+  },
+  "colors": {
+    "default": "0x0089a1",
+    "red": "0x800000",
+    "orange": "0xffa500",
+    "gray": "0x242424",
+    "green": "0x90c541"
+  },
+  "owner_commands": [
+    "authorize",
+    "forbid",
+    "quit",
+    "order66",
+    "delete",
+    "offtopic",
+    "kick",
+    "owneredit",
+    "reboot",
+    "sleep",
+    "rules",
+    "managers"
+  ]
 }
