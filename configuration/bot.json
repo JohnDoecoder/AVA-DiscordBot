@@ -1,5 +1,5 @@
 {
-  "prefix": "?",
+  "prefix": "!",
   "errors": {
     "file_not_found": "Ich konnte leider die Datei {insert} nicht finden.",
     "command_not_found": [
