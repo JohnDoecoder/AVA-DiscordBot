@@ -11,14 +11,14 @@
             "reaction": "✅",
             "roles": []
         },
-        "reboot": "-",
+        "reboot": false,
         "managers": []
     },
     "commands": {
         "hello": {
             "replies": [
                 "Hallo {mention}!",
-                "Hallo. Ich hei\u00dfe Bot. James Bot...moment falscher Text.",
+                "Hallo. Ich heiße Bot. James Bot...moment falscher Text.",
                 "Hey, {mention}, heute schon gelacht?",
                 "Hallöchen {mention}!",
                 "Schön dich zu sehen, {mention}",
@@ -93,7 +93,7 @@
                 "Liebevoll von der KI kreiert:",
                 "Darf ich vorstellen, dein neuer Dating-Partner:",
                 "Diese Person gibt es nicht:",
-                "Wie diese Person wohl hei\u00dfen würde...",
+                "Wie diese Person wohl heißen würde...",
                 "Das hat das Internet ausgespuckt:",
                 "Smash, trash or marry?",
                 "Ich will ja nichts sagen, aber ich sehe da ein paar \u00c4hnlichkeiten..."
@@ -113,7 +113,7 @@
                 "Ist sie nicht niedlich?",
                 "Herzallerliebst, oder?",
                 "Eine Katze :cat:",
-                "Um dir den Tag zu versü\u00dfen:",
+                "Um dir den Tag zu versüßen:",
                 "Vielleicht Schrödingers Katze?",
                 "Brandneu, noch mit allen neun Leben:"
             ],
@@ -134,10 +134,13 @@
                     "Klasse Aktion, {ref_mention}, hier dein Award von {mention}.",
                     "Den hast du dir redlich verdient {ref_mention}!",
                     "Just made my day! Thx {ref_mention}",
-                    "Wie ich sehe sammelt {ref_mention} flei\u00dfig Medallien!"
+                    "Wie ich sehe sammelt {ref_mention} fleißig Medallien!"
             ],
             "self_award": [
                     "So einfach geht das leider nicht, {mention}."
+            ],
+            "bot_award": [
+                    "Ich fühle mich geschmeichelt, darf das aber nicht zulassen, {mention}."
             ],
             "help": "`/award <mention>` | Gives the mentioned user an award.",
             "permissions": ["*"],
@@ -156,7 +159,7 @@
                 "Ich kann dir nur Musik spielen, wenn du auch in einem Sprachkanal bist."
             ],
             "no_args": [
-                "Wie soll ich dire etwas vorspielen, wenn du mir keinen Song angibst?"
+                "Wie soll ich dir etwas vorspielen, wenn du mir keinen Song angibst?"
             ],
             "permissions": ["*"],
             "filter": [
@@ -263,7 +266,7 @@
                 "Hast du da nicht einen Suchbegriff vergessn?",
                 "Da fehlt mir leider etwas, versuch es nochmal.",
                 "Kein Suchbegriff, keine Suche. Keine Suche, kein Ergebnis.",
-                "Ich wei\u00df ja nicht wie du dir das vorstellts, aber so funktioniert das nicht!",
+                "Ich weiß ja nicht wie du dir das vorstellts, aber so funktioniert das nicht!",
                 "Willst du mich ärgern oder was soll ich damit anfangen?",
                 "Ich muss dich enttäuschen, da fehlt etwas."
             ],
@@ -291,7 +294,7 @@
                 "With great power comes great responsibility. Und anscheinend hast du diese nicht...",
                 "Ich muss dich enttäuschen: Das darfst du nicht."
             ],
-            "help": "`/offtopic <textchannel mention> (referring to a message)` | Deletes the reffered message and moves it to the mentioned channel.",
+            "help": "`/offtopic <messageID> <textchannel mention>` | Deletes the reffered message and moves it to the mentioned channel.",
             "permissions": ["*"],
             "urls": []
         },
@@ -338,7 +341,7 @@
         },
         "permissions": {
                 "replies": [],
-                "help": "`/permissions <userid/command>` | Shows either all users with permissions to execute the command or all commands the user has permissions for.",
+                "help": "`/permissions <userID/command>` | Shows either all users with permissions to execute the command or all commands the user has permissions for.",
                 "permissions": ["*"],
                 "urls": []
             },
@@ -544,7 +547,7 @@
         "idiots": {
             "replies": [
                 "Das sind die Deppen vom Dienst:",
-                "Na, wer ist denn der grö\u00dfte Idiot?",
+                "Na, wer ist denn der größte Idiot?",
                 "Hmmm? Musst du etwa nachschauen ob dich jemand übertrumpft hat?",
                 "Unsere servereigenen Idioten aus bester Haltung:",
                 "Es kann nicht nur einen geben:",
@@ -636,20 +639,12 @@
                 "https://dailyverses.net/de/zufalls-bibelvers/neu"
             ]
         },
-        "translate": {
-            "replies": [],
-            "help": "`/translate` <language> <word>| Translate a word into your desired language.",
-            "permissions": ["*"],
-            "urls": [
-                "https://deepl.com"
-            ]
-        },
         "authorize": {
             "replies": [
                 "{ref_mention} hat/haben nun die Rechte {insert} auszuführen!"
             ],
             "no_args": "Bitte midestens eine Nutzer-ID und mindestens einen Befehl angeben.",
-            "help": "`/authorize {<userid1>, <userid2>, ...} {<cmd1>, <cmd2>, ...}` | Authorize one or more user to use one or more commands. To select all users or all commands use `*` as userid / cmd.",
+            "help": "`/authorize \"<userid1>, <userid2>, ...\" \"<cmd1>, <cmd2>, ...\"` | Authorize one or more user to use one or more commands. To select all users or all commands use `*` as userid / cmd. The quotation marks are important.",
             "permissions": ["*"],
             "urls": []
         },
@@ -658,7 +653,7 @@
                 "{ref_mention} kann/können {insert} nun nicht mehr auszuführen!"
             ],
             "no_args": "Bitte midestens eine Nutzer-ID und mindestens einen Befehl angeben.",
-            "help": "`/forbid {<userid1>, <userid2>, ...} {<cmd1>, <cmd2>, ...}` | Forbid one or more users to use one or more commands.",
+            "help": "`/forbid \"<userid1>, <userid2>, ...\" \"<cmd1>, <cmd2>, ...\"` | Forbid one or more users to use one or more commands. To select all users or all commands use `*` as userid / cmd. The quotation marks are important.",
             "permissions": ["*"],
             "urls": []
         },
@@ -689,7 +684,7 @@
                 "Ich kann kann nicht erkennen welche Nachricht ich löschen soll. Bitte hilf mir.",
                 "Ich glaube du hast da eine Kleinigkeit vergessen..."
             ],
-            "help": "`/delete (referring to a message)` | I guess you can figure out what that does...",
+            "help": "`/delete <messageID>` | I guess you can figure out what that does...",
             "permissions": ["*"],
             "urls": []
         },
@@ -715,7 +710,7 @@
                 "Etwas Erheiterung für dich:",
                 "Und wieder ein Brüller: (Hoffe ich jedenfalls)",
                 "Viellecht wird es ja zur Abwechslung mal ein guter...",
-                "Was eure Spezies so Lustig findet...",
+                "Was eure Spezies so lustig findet...",
                 "Wer dennkt sich denn bitte so etwas aus?",
                 "Ich hoffe ich kann dich damit zum Lachen bringen:",
                 "Ich habe das ganze Internet durchforscht und das gefunden:",
@@ -724,32 +719,32 @@
             "help": "`/joke` | Get a random joke and laugh about it (or not).",
             "permissions": ["*"],
             "filter": [
-                "Dildo",
-                "Vibrator",
-                "Kondom",
-                "Schamlippen",
-                "Vagina",
-                "Penis",
-                "Muschi",
-                "Sex",
+                "dildo",
+                "vibrator",
+                "kondom",
+                "schamlippen",
+                "vagina",
+                "penis",
+                "muschi",
+                "sex",
                 "blasen",
-                "masturbier",
-                "Selbstbefriedigung",
-                "Schiebedach",
+                "masturbieren",
+                "masturbation",
+                "selbstbefriedigung",
+                "schiebedach",
                 "nackt",
-                "Bett",
-                "Schniedel",
-                "Schlampe",
-                "Schwul",
-                "Lesbisch",
-                "Möpse",
-                "Titten",
-                "Busen",
-                "Brüste",
-                "Brust",
-                "Porno",
-                "Spreizen",
-                "Sperma"
+                "schniedel",
+                "schlampe",
+                "schwul",
+                "lesbisch",
+                "möpse",
+                "titten",
+                "busen",
+                "brüste",
+                "porno",
+                "spreizen",
+                "sperma",
+                "geschlechtsorgan"
             ],
             "urls": [
                 "https://www.hahaha.de/witze/menue/zufallswitze/",

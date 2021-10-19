@@ -6,7 +6,9 @@ import discord
 
 def init_guild_config(guild: discord.Guild, folders: list):
     # Create guild root directory
-    if not os.path.isdir(f'guilds/{guild.id}/'):
+    if os.path.isdir(f'guilds/archived_{guild.id}/'):
+        shutil.move(f'guilds/archived_{guild.id}/', f'guilds/{guild.id}/')
+    elif not os.path.isdir(f'guilds/{guild.id}/'):
         os.mkdir(f'guilds/{guild.id}/')
 
     # Create subfolders

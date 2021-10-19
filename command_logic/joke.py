@@ -2,6 +2,7 @@ import urllib.request as ul
 from bs4 import BeautifulSoup as soup
 from helpers import html
 from random import randint
+import re
 
 
 def get_joke(ctx, cmds) -> str:
@@ -13,7 +14,7 @@ def get_joke(ctx, cmds) -> str:
         success = True
 
         # Choose url
-        url = cmds[ctx.invoked_with]['urls'][randint(0, len(cmds[ctx.invoked_with]['urls']))]
+        url = cmds[ctx.invoked_with]['urls'][randint(0, len(cmds[ctx.invoked_with]['urls'])-1)]
 
         # Fetch site
         req = ul.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -32,20 +33,20 @@ def get_joke(ctx, cmds) -> str:
             joke_text = str(raw_joke.find_next("p"))
             joke = joke_title + joke_text
 
-        # Filter: Get new joke if bad word in it
-        for word in cmds[ctx.invoked_with]['filter']:
-            if word in joke:
-                print('Bad word detected getting another joke. Joke was: ' + str(joke))
-                success = False
+        # Filter: Mark bad words as spoiler
+        for word in joke.split():
+            f_word = re.sub(r'[^\w\s]', '', word.lower())
+            if f_word in cmds[ctx.invoked_with]['filter']:
+                joke = joke.replace(word, f'||{word}||')
 
-            # Get new joke if too long for Discord
-            if len(joke) > 1500:
-                print('Joke too long, getting another joke')
-                success = False
+        # Get new joke if too long for Discord
+        if len(joke) > 1500:
+            print('Joke too long, getting another joke')
+            success = False
 
     # Clean joke
     joke = html.clean_text(joke)
-    joke = joke.replace('\n', '')
+    joke = joke.replace('\n', ' ')
     joke = joke.replace('...', '')
     while '  ' in joke:
         joke = joke.replace('  ', ' ')

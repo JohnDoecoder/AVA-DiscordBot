@@ -60,7 +60,7 @@ async def offtopic(ctx, message_id: str, channel_mention: str, color):
         return 1
 
     moved_embed = discord.Embed(title="Nachricht verschoben", color=color)
-    moved_embed.add_field(name=f'Offtopic: {ctx.author} schrieb in #{message.channel.name}',
+    moved_embed.add_field(name=f'Offtopic: {message.author} schrieb in #{message.channel.name}',
                           value=message.content, inline=True)
 
     # TODO: Can u have multiple attachments?

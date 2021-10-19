@@ -206,7 +206,7 @@ class Music:
         try:
             queued = await self.add_song(ctx, url, filter)
         except Exception as ex:
-            if str(ex).startswith('ERROR: No video formats found'):
+            if str(ex).startswith('ERROR: No video formats found') or 'Too Many Requests' in str(ex):
                 ex = 'YouTube blocked this IP-Adress. Use a VPN or a Proxy to access YouTube again.'
             await self.send_embed(ctx, title='Error', description=str(ex), color=0x800000)
             return
