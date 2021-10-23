@@ -406,6 +406,13 @@
             "help": "`/owneredit <add/dell/color> <link(s)/link index/hex color>` Lets you customise your owner links.",
             "permissions": ["*"]
         },
+        "search": {
+            "replies": [
+                "DuckDuckGo hat das hier ausgespuckt:"
+            ],
+            "help": "`/search <searchterm>` Search the web with DuckDuckGo.",
+            "permissions": ["*"]
+        },
         "reboot": {
             "replies": [],
             "help": "`/reboot` | Reboots the bot. Can be helpful if it seems broken.",

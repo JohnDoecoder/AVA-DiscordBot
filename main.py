@@ -17,7 +17,7 @@ from command_logic.music import Music
 from helpers import read_file, replies, write_file
 import command_logic as clogic
 from command_logic import joke, meme, audio, award, cointoss, dice, image, messages, poll, quote, timer, verse, \
-    wiki, health, bored, eat
+    wiki, health, bored, eat, websearch
 from helpers.system import *
 
 # Credentials -----------------------------------------------------
@@ -409,8 +409,7 @@ async def _managers(ctx, userid1, userid2, userid3):
 
 @slash.slash(
     name='purge',
-    description='Delete all your messages from this channel.',
-    guild_ids=guilds
+    description='Delete all your messages from this channel.'
 )
 async def _purge(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -448,8 +447,7 @@ async def _rules(ctx, message_id, emoji, role_id):
 
 @slash.slash(
     name='meme',
-    description='Grabs a random meme from Reddit.',
-    guild_ids=guilds
+    description='Grabs a random meme from Reddit.'
 )
 async def _meme(ctx):
     await ctx.defer()
@@ -459,8 +457,7 @@ async def _meme(ctx):
 
 @slash.slash(
     name='hello',
-    description='Lets the bot greet you.',
-    guild_ids=guilds
+    description='Lets the bot greet you.'
 )
 async def _hello(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -504,8 +501,7 @@ async def _play(ctx, video):
 
 @slash.slash(
     name='stop',
-    description='Stops the currently played music.',
-    guild_ids=guilds
+    description='Stops the currently played music.'
 )
 async def _stop(ctx):
     await ctx.defer()
@@ -515,8 +511,7 @@ async def _stop(ctx):
 
 @slash.slash(
     name='loop',
-    description='Switches between loop modes.',
-    guild_ids=guilds
+    description='Switches between loop modes.'
 )
 async def _loop(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -525,8 +520,7 @@ async def _loop(ctx):
 
 @slash.slash(
     name='leave',
-    description='Lets the bot leave the voice channel.',
-    guild_ids=guilds
+    description='Lets the bot leave the voice channel.'
 )
 async def _leave(ctx):
     await ctx.defer()
@@ -536,8 +530,7 @@ async def _leave(ctx):
 
 @slash.slash(
     name='skip',
-    description='Skips the currently plays track and plays the next one in the queue.',
-    guild_ids=guilds
+    description='Skips the currently plays track and plays the next one in the queue.'
 )
 async def _skip(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -563,8 +556,7 @@ async def _jump(ctx, tracknr):
 
 @slash.slash(
     name='queue',
-    description='shows the music queue.',
-    guild_ids=guilds
+    description='shows the music queue.'
 )
 async def _queue(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -648,8 +640,7 @@ async def _offtopic(ctx, message_id, mention):
 
 @slash.slash(
     name='morning',
-    description='Wishes me a good morning.',
-    guild_ids=guilds
+    description='Wishes me a good morning.'
 )
 async def _morning(ctx):
     pass
@@ -659,8 +650,7 @@ async def _morning(ctx):
 
 @slash.slash(
     name='call',
-    description='Counts up the times you were called.',
-    guild_ids=guilds
+    description='Counts up the times you were called.'
 )
 async def _call(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -703,8 +693,7 @@ async def _permissions(ctx, command_mention):
 
 @slash.slash(
     name='bored',
-    description='Gives you some drawing inspiration.',
-    guild_ids=guilds
+    description='Gives you some drawing inspiration.'
 )
 async def _bored(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -713,8 +702,7 @@ async def _bored(ctx):
 
 @slash.slash(
     name='quit',
-    description='Stops the execution of the bot.',
-    guild_ids=guilds
+    description='Stops the execution of the bot.'
 )
 async def _quit(ctx):
     await ctx.defer()
@@ -724,8 +712,7 @@ async def _quit(ctx):
 
 @slash.slash(
     name='owner',
-    description='Shows you some Information about hte owner.',
-    guild_ids=guilds
+    description='Shows you some Information about hte owner.'
 )
 async def _owner(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -806,8 +793,7 @@ async def _kick(ctx, mention):
 
 @slash.slash(
     name='pause',
-    description='Pauses the currently played music.',
-    guild_ids=guilds
+    description='Pauses the currently played music.'
 )
 async def _pause(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -816,8 +802,7 @@ async def _pause(ctx):
 
 @slash.slash(
     name='resume',
-    description='Resumes paused music playback.',
-    guild_ids=guilds
+    description='Resumes paused music playback.'
 )
 async def _resume(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -826,8 +811,7 @@ async def _resume(ctx):
 
 @slash.slash(
     name='sleep',
-    description='Sends the bot to sleep.',
-    guild_ids=guilds
+    description='Sends the bot to sleep.'
 )
 async def _sleep(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -836,8 +820,7 @@ async def _sleep(ctx):
 
 @slash.slash(
     name='grrr',
-    description='Use if you are angry.',
-    guild_ids=guilds
+    description='Use if you are angry.'
 )
 async def _grrr(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -880,8 +863,7 @@ async def _idiots(ctx, mention=None):
 
 @slash.slash(
     name='eating',
-    description='Start a timer to see how long you need for eating.',
-    guild_ids=guilds
+    description='Start a timer to see how long you need for eating.'
 )
 async def _eating(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -907,8 +889,7 @@ async def _eatingstats(ctx, mention=None):
 
 @slash.slash(
     name='internet',
-    description='Use this command if your connection is bad.',
-    guild_ids=guilds
+    description='Use this command if your connection is bad.'
 )
 async def _internet(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -917,8 +898,7 @@ async def _internet(ctx):
 
 @slash.slash(
     name='ping',
-    description='See the response time of the bot.',
-    guild_ids=guilds
+    description='See the response time of the bot.'
 )
 async def _ping(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -927,8 +907,7 @@ async def _ping(ctx):
 
 @slash.slash(
     name='health',
-    description='Ask AVA how she is feeling.',
-    guild_ids=guilds
+    description='Ask AVA how she is feeling.'
 )
 async def _health(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1030,8 +1009,7 @@ async def _poll(ctx, title, option1, option2, option3=None, option4=None, option
 
 @slash.slash(
     name='cointoss',
-    description='Throw a coin and see how it lands.',
-    guild_ids=guilds
+    description='Throw a coin and see how it lands.'
 )
 async def _cointoss(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1071,8 +1049,7 @@ async def _timer(ctx, timer=None):
 
 @slash.slash(
     name='dice',
-    description='Throw a six sided dice.',
-    guild_ids=guilds
+    description='Throw a six sided dice.'
 )
 async def _dice(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1081,8 +1058,7 @@ async def _dice(ctx):
 
 @slash.slash(
     name='cat',
-    description='Shows you a picture of a random cat',
-    guild_ids=guilds
+    description='Shows you a picture of a random cat'
 )
 async def _cat(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1091,8 +1067,7 @@ async def _cat(ctx):
 
 @slash.slash(
     name='person',
-    description='Shows you a picture of a random person',
-    guild_ids=guilds
+    description='Shows you a picture of a random person'
 )
 async def _person(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1101,8 +1076,7 @@ async def _person(ctx):
 
 @slash.slash(
     name='verse',
-    description='Grabs a random verse from the bible.',
-    guild_ids=guilds
+    description='Grabs a random verse from the bible.'
 )
 async def _verse(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1121,15 +1095,14 @@ async def _verse(ctx):
         )
     ]
 )
-async def _delete(ctx):
+async def _delete(ctx, message_id):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
-    await delete(ctx)
+    await delete(ctx, message_id)
 
 
 @slash.slash(
     name='quote',
-    description='Grabs a random quote from a smart person.',
-    guild_ids=guilds
+    description='Grabs a random quote from a smart person.'
 )
 async def _quote(ctx):
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
@@ -1138,13 +1111,30 @@ async def _quote(ctx):
 
 @slash.slash(
     name='joke',
-    description='Gets a random joke to make you laugh',
-    guild_ids=guilds
+    description='Gets a random joke to make you laugh'
 )
 async def _joke(ctx):
     await ctx.defer()
     if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
     await joke(ctx)
+
+
+@slash.slash(
+    name='search',
+    description='Search the internet (with DuckDuckGo).',
+    options=[
+        create_option(
+            name='searchterm',
+            description='The term you want to search for.',
+            option_type=3,
+            required=True
+        )
+    ]
+)
+async def _search(ctx, searchterm):
+    await ctx.defer()
+    if await no_perms(ctx.invoked_with, ctx.author, ctx.channel): return
+    await search(ctx, searchterm)
 
 
 @slash.slash(
@@ -1375,6 +1365,27 @@ async def managers(ctx, *args):
         return await send_wrong_args(ctx)
     pass
     # TODO: Add logic to add/remove managers (can copy from authorize/forbid)
+
+
+@bot.command()
+async def search(ctx, *args):
+    if not args:
+        return await send_wrong_args(ctx)
+
+    results = await clogic.websearch.search('+'.join(args))
+
+    embed_msg = discord.Embed(
+        title=' '.join(args),
+        description=replies.get_reply(guilds_config[ctx.guild.id]['commands'][ctx.invoked_with]['replies']),
+        color = discord.Colour(int(bot_config['colors']['default'], 16))
+    )
+    for result in results:
+        embed_msg.add_field(
+            name=result,
+            value=results[result]['link'] + '\n' + results[result]['text']
+        )
+
+    await ctx.send(embed=embed_msg)
 
 
 @bot.command()

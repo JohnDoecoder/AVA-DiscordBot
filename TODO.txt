@@ -1,6 +1,4 @@
 # TODO: Todo list
-- Add Presearch Searchengine (!search) -> first three results
-- PERMISSIONS WON'T WORK WITH SLASH COMMANDS!!!
 - !strike (3 strikes and out)
 - !stats command: Shows user stats like how many awards, idiots, strikes and gamestats
 - Logs should have image link instead of empty message when images are sent
