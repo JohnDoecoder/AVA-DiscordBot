@@ -1,0 +1,5 @@
+praw
+youtube_dl
+discord
+discord-py-slash-command
+beautifulsoup4
